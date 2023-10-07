@@ -23,16 +23,16 @@
             - **Dirty reads, Nonrepeatable reads, phantom reads, Isolation levels**
                 - **Dirty Reads** điều này xảy ra khi một transaction tiến hành đọc dữ liệu mà chưa được commited. Ví dụ: transaction A cập nhập 1 dữ liệu, transaction B đọc dữ liệu sau khi A cập nhật xong. Nhưng vì lý do nào đó A không commit thành công, dự liệu quay trở lại trạng thái ban đầu, khi đó dữ liệu của B trở thành Dirty.
                     
-                    ![Untitled]static/Untitled.png)
+                    ![Untitled](static/Untitled.png)
                     
                 - **Nonrepeatable reads** xảy ra khi một transaction đọc cùng 1 dữ liệu 2 lần nhưng lại nhận được giá trị khác nhau. Ví dụ: transaction A đọc 1 dữ liệu, transaction B cập nhật xóa dữ liệu đó. Nếu A đọc lại dữ liệu đó nó sẽ lấy các giá trị là khác nhau.
                 - **Phantom reads** là rủi ro xảy ra với lệnh read có điều kiện. Ví dụ: giả sử transaction A đọc một tập hợp các dữ liệu đáp ứng một số điều kiện tìm kiếm, transaction B tạo ra một dữ liệu mới khớp với điều kiện được tìm kiếm cho transaction A. Nếu A thực hiện lại với điều kiện như vậy thì nó sẽ nhận dc một tập hợp các dữ liệu là không đồng nhất.
                     
-                    ![Untitled]static/Untitled%201.png)
+                    ![Untitled](static/Untitled%201.png)
                     
                 - Như vậy, để tránh được các trường hợp kể trên chúng ta cần phải khóa dữ liệu, không cho những tiến trình xử lý khác thực hiện các operations trên dữ liệu khi transaction hiện tại đang làm việc và việc khóa này sẽ được giải phóng ở cuối transaction. Có 3 loại khóa dữ liệu là: write locks, read locks, rang locks. ***Isolation Levels*** chỉ ra những mức độ khóa khác nhau.
                     
-                    ![Untitled]static/Untitled%202.png)
+                    ![Untitled](static/Untitled%202.png)
                     
                     - **Read uncommitted** Khi transaction thực hiện ở mức này, các truy vấn vẫn có thể truy nhập vào các bản ghi đang được cập nhật bởi một transaction khác và nhận được dữ liệu tại thời điểm đó mặc dù dữ liệu đó chưa được commit. Nếu vì lý do nào đó transaction ban đầu rollback lại những cập nhật, dữ liệu sẽ trở lại giá trị cũ. Khi đó transaction thứ hai nhận được dữ liệu sai.
                     - **Read committed** Transaction sẽ không đọc được dữ liệu đang được cập nhật mà phải đợi đến khi việc cập nhật thực hiện xong. Vì thế nó tránh được dirty read như ở mức trên.
@@ -40,9 +40,9 @@
                     - **Serializable** Mức isolation này tăng thêm một cấp nữa và khóa toàn bộ dải các bản ghi có thể bị ảnh hưởng bởi một transaction khác, dù là UPDATE/DELETE bản ghi đã có hay INSERT  bản ghi mới.
                     - Bonus **Snapshot:**  Mức độ này cũng đảm bảo độ cô lập tương đương với Serializable, nhưng nó hơi khác ở phương thức hoạt động. Khi transaction đang select các bản ghi, nó không khóa các bản ghi này lại mà *tạo một bản sao (snapshot) và select trên đó*. Vì vậy các transaction khác insert/update lên các bản ghi đó không gây ảnh hưởng đến transaction ban đầu. Tác dụng của nó là giảm blocking giữa các transaction mà vẫn đảm bảo tính toàn vẹn dữ liệu. Tuy nhiên cái giá kèm theo là cần thêm bộ nhớ để lưu bản sao của các bản ghi, và phần bộ nhớ này là cần cho mỗi transaction do đó có thể tăng lên rất lớn
                     
-                    ![Untitled]static/Untitled%203.png)
+                    ![Untitled](static/Untitled%203.png)
                     
-                    ![Untitled]static/Untitled%204.png)
+                    ![Untitled](static/Untitled%204.png)
                     
         - **Durability**: tính bền vững, điều này có nghĩa dữ liệu sau khi thực hiện transaction sẽ không thay đổi nếu chúng ta gặp vấn đề gì đó liên quan đến database.
             - Ví dụ với transaction chuyển tiền được diễn ra thành công. Tức là khi giao dịch đã hoàn tất thì tất cả những thay đổi sẽ ghi lại ở dạng bền như đĩa cứng và cả giao dịch đã hoàn thành cũng được ghi lại.
@@ -50,20 +50,20 @@
             - Các kỹ thuật đảm bảo tính bền vững:
                 - WAL - Write ahead log
                     
-                    ![Untitled]static/Untitled%205.png)
+                    ![Untitled](static/Untitled%205.png)
                     
                 - OS cache
                     
-                    ![Untitled]static/Untitled%206.png)
+                    ![Untitled](static/Untitled%206.png)
                     
                 - Asynchronous snapshot
                 - AOF
         
-        ![Untitled]static/Untitled%207.png)
+        ![Untitled](static/Untitled%207.png)
         
     - ACID by practical examples:
         
-        [co-so-du-lieu-phan-tan__cac-muc-isolation-level - [cuuduongthancong.com].pdf]static/co-so-du-lieu-phan-tan__cac-muc-isolation-level_-_cuuduongthancong.com.pdf)
+        [co-so-du-lieu-phan-tan__cac-muc-isolation-level - [cuuduongthancong.com].pdf](static/co-so-du-lieu-phan-tan__cac-muc-isolation-level_-_cuuduongthancong.com.pdf)
         
         - Phantom reads:
             - Demo bằng 2 transaction như sau:
@@ -114,21 +114,21 @@
             - DB không đọc từng hàng một mà sẽ đọc theo trang (1 hoặc nhiều trang)
             - Mỗi trang sẽ có kích thước riêng tùy theo DB (VD 8KB trong postgree, 16KB trong MySQL)
             
-            ![Untitled]static/Untitled%208.png)
+            ![Untitled](static/Untitled%208.png)
             
         - **IO**
             - Các hoạt động I/O làm việc với ổ đĩa (có tốc độ chậm) nên ta sẽ cố gắng giảm thiểu tối đa chúng
             - IO sẽ lấy dữ liệu 1 hoặc nhiều trang phụ thuộc vào phân vùng ổ đĩa và các yếu tố khác.
             - IO cũng đọc theo trang và một vài hoạt động IO đi đến hệ thống cache thay vì ổ đĩa
             
-            ![Untitled]static/Untitled%209.png)
+            ![Untitled](static/Untitled%209.png)
             
         - **Heap**
             - *Heap* là cấu trúc dữ liệu nơi mà bảng được lưu cùng với tất cả các *page* theo thứ tự lần lượt.
             - Đây là nơi dữ liệu thực sử được lưu trữ
             - Việc duyệt toàn bộ *heap* rất tốn kém nên ta cần đánh *index* (cho chúng ta biết vị trí chính xác cần đọc trong heap)
             
-            ![Untitled]static/Untitled%2010.png)
+            ![Untitled](static/Untitled%2010.png)
             
         - **Index**
             
@@ -140,7 +140,7 @@
             - Cấu trúc dữ liệu được sử dụng phổ biến cho index là *b-trees*
                 - VD: Index trong SQL Server được tạo thành từ một tập hợp các page và chúng được tổ chức trong cấu trúc *b-tree*.
             
-            ![Untitled]static/Untitled%2011.png)
+            ![Untitled](static/Untitled%2011.png)
             
             - Hình dưới minh họa việc sử dụng index:
                 - Index theo cột EMP_ID: 10(1,0)
@@ -153,20 +153,20 @@
                     ```
                     
             
-            ![Untitled]static/Untitled%2012.png)
+            ![Untitled](static/Untitled%2012.png)
             
     - **Row-based vs Column-based database**
         - Row-based DB
         
-        ![Untitled]static/Untitled%2013.png)
+        ![Untitled](static/Untitled%2013.png)
         
         - Column Store
         
-        ![Untitled]static/Untitled%2014.png)
+        ![Untitled](static/Untitled%2014.png)
         
         - So sánh:
         
-        ![Untitled]static/Untitled%2015.png)
+        ![Untitled](static/Untitled%2015.png)
         
     - **Primary Key vs Secondary Key**
         - 
@@ -188,7 +188,7 @@
             docker exec -it pg1 psql -U postgres
             ```
             
-            ![Untitled]static/Untitled%2016.png)
+            ![Untitled](static/Untitled%2016.png)
             
             - Thao tác vui với postgres: Tạo 1M dòng
         
@@ -201,13 +201,13 @@
         select count(*) from temp;
         ```
         
-        ![Untitled]static/Untitled%2017.png)
+        ![Untitled](static/Untitled%2017.png)
         
     - VD2: Làm quen với Indexing
         
         B1: Import *employees.sql* file vào trong docker (hoặc là tạo 10M rows)
         
-        [employees.sql]static/employees.sql)
+        [employees.sql](static/employees.sql)
         
         ```bash
         # run docker
@@ -251,7 +251,7 @@
         explain analyze select id from employees where name = 'Son';
         ```
         
-        ![Untitled]static/Untitled%2018.png)
+        ![Untitled](static/Untitled%2018.png)
         
         ```sql
         #Tạo index cho cột name
@@ -260,14 +260,14 @@
         explain analyze select id from employees where name = 'Son';
         ```
         
-        ![Untitled]static/Untitled%2019.png)
+        ![Untitled](static/Untitled%2019.png)
         
         ```sql
         #Thay thế điều kiện '=' bằng 'like' (lâu hơn rất nhiều)
         explain analyze select id, name from employees where name like '%Son%';
         ```
         
-        ![Untitled]static/Untitled%2020.png)
+        ![Untitled](static/Untitled%2020.png)
         
         ⇒ Lý do là vì toán tử ‘LIKE’ với các mẫu có ký tự đại diện không tận dụng được sức mạnh của index. Việc sử dụng pattern ‘%Son%’ *yêu cầu hệ thống cơ sở dữ liệu quét qua tất cả các giá trị chỉ mục để xác định các hàng phù hợp*. Quá trình quét này chậm hơn việc tra cứu trực tiếp, vì nó cần kiểm tra từng giá trị để xác định sự hiện diện của mẫu mong muốn. 
         
@@ -295,19 +295,19 @@
         - Đầu tiên, tạo một bảng 5M dòng với 3 trường: id, g, name
         - Thực hiện query *select name* mà chưa tạo index
             
-            ![Untitled]static/Untitled%2021.png)
+            ![Untitled](static/Untitled%2021.png)
             
         - Tạo index
             
-            ![Untitled]static/Untitled%2022.png)
+            ![Untitled](static/Untitled%2022.png)
             
         - Thực hiện query lại, khi này Index Scan sẽ được sử dụng
             
-            ![Untitled]static/Untitled%2023.png)
+            ![Untitled](static/Untitled%2023.png)
             
         - Sửa query: Thay vì *select name ⇒ select id.* Index Only Scan được sử dụng
             
-            ![Untitled]static/Untitled%2024.png)
+            ![Untitled](static/Untitled%2024.png)
             
             - So what happended ??? Lý do là vì mình đánh index cột *id*, query sau ko từ index ta đã có đầy đủ thông tin rồi nên ko cần phải truy cập vào bảng để lấy thông tin nữa
                 1. **Index Scan:** An index scan, also known as a non-covering index scan, involves accessing the index structure to locate the relevant rows in the table. Once the index identifies the matching rows, the database engine retrieves the corresponding data from the table itself. In an index scan, the database engine needs to perform two I/O operations: one to read the index and another to retrieve the actual data from the table.
@@ -318,22 +318,22 @@
         
         [Bloom Filters: Cấu trúc lưu trữ dữ liệu dựa trên xác suất. - Viblo](https://viblo.asia/p/bloom-filters-tai-sao-cac-mang-blockchain-lai-thuong-su-dung-no-GrLZD07eZk0)
         
-        ![Untitled]static/Untitled%2025.png)
+        ![Untitled](static/Untitled%2025.png)
         
 - **Section 5: B-Tree and B+Tree in Production DB system**
     - **Full Table Scan**
         
-        ![Untitled]static/Untitled%2026.png)
+        ![Untitled](static/Untitled%2026.png)
         
     - **Original B-Tree**
         
         **B-Tree** lưu trữ dữ liệu theo kiểu mỗi node lưu trữ key theo thứ tự tăng dần, mỗi node này lại chứa 2 liên kết đến những node trước và sau nó. Node bên trái có key <= key node hiện tại, còn node bên phải thì có key >= key của node hiện tại. Nếu một node mà có n keys thì nó sẽ có tối đa là n + 1 node con.
         
-        ![Untitled]static/Untitled%2027.png)
+        ![Untitled](static/Untitled%2027.png)
         
-        ![Untitled]static/Untitled%2028.png)
+        ![Untitled](static/Untitled%2028.png)
         
-        ![Untitled]static/Untitled%2029.png)
+        ![Untitled](static/Untitled%2029.png)
         
     - **How the Original B-Tree Helps Performance**
         
@@ -355,7 +355,7 @@
         
         - Index ở đây chính là last_name, first_name, dob trong bảng People.
         
-        ![Untitled]static/Untitled%2030.png)
+        ![Untitled](static/Untitled%2030.png)
         
         - **Những kiểu truy vấn có thể dùng với B-Tree**
             - **Tìm kiếm đầy đủ giá trị (Full value)**
@@ -375,24 +375,24 @@
             - Giới hạn lớn nhất của B-Tree chính là việc nó c**hỉ tìm kiếm tốt tại cột ngoài cùng bên trái của index**.
             - Bạn **không thể bỏ qua columns trong index** ví dụ không thể chỉ tìm kiếm từ last_name và dob mà bỏ qua first_name storage engine không thể tối ưu truy vấn với bấy kỳ column nào nằm bên phải một dải giá trị, ví dụ nếu như bạn query WHERE last_name="Smith" AND first_name LIKE 'J%' AND dob='1976-12-23' Thì sẽ chỉ có tác dụng trên 2 cột đầu tiên bên trai trong index. Bởi vì LIKE ở đây được hiểu như một dải các giá trị.
             
-            ![Untitled]static/Untitled%2031.png)
+            ![Untitled](static/Untitled%2031.png)
             
         - Qua đây chúng ta có thể thấy rằng *việc sắp xếp các column trong index là vô cùng quan trọng , Để có hiệu suất tối ưu việc tạo chỉ mục cho cùng một column với các thứ tự khác nhau là cần thiết*.
         
     - **B+Tree**
         
-        ![Untitled]static/Untitled%2032.png)
+        ![Untitled](static/Untitled%2032.png)
         
-        ![Untitled]static/Untitled%2033.png)
+        ![Untitled](static/Untitled%2033.png)
         
     - **B+Tree DBMS Consideration**
         
-        ![Untitled]static/Untitled%2034.png)
+        ![Untitled](static/Untitled%2034.png)
         
         - 
     - **B+Tree Storage cost in MySQL vs Postgres**
         
-        ![Untitled]static/Untitled%2035.png)
+        ![Untitled](static/Untitled%2035.png)
         
 - **Bonus: Joining Table**
     
@@ -412,7 +412,7 @@
     - ****Horizontal & Vertical partitioning****
         - **Horizontal partitioning**: Chia table lớn thành nhiều table nhỏ hơn, các table nhỏ hơn gọi là **partition table**, kế thừa toàn bộ cấu trúc của parent table, từ column cho đến kiểu dữ liệu
             
-            ![Untitled]static/Untitled%2036.png)
+            ![Untitled](static/Untitled%2036.png)
             
             - **Horizontal partitioning** có những ưu điểm sau:
                 - Giới hạn vùng dữ liệu phải scan trên table trong một vài trường hợp. Nếu ta cần tìm một học sinh tên John Doe không phân biệt giới tính thì việc partition như ví dụ trên không đem lại hiểu quả.
@@ -425,13 +425,13 @@
             
             Ngoài ra, với **vertical partitioning**, best practice là *sử dụng chung một PK cho toàn bộ các partition table.*
             
-            ![Untitled]static/Untitled%2037.png)
+            ![Untitled](static/Untitled%2037.png)
             
             - Vậy lợi ích của **vertical partitioning** là gì?
                 - Về cơ bản, các records được lưu thành một khối dữ liệu có độ lớn gần tương tự như nhau được gọi là block. *Do đó, nếu một table chứa số lượng column ít đồng nghĩa với việc tăng đương số lượng records lưu trữ trên một block*. Như vậy nếu query các column trong cùng block, các xử lý tính toán I/O sẽ giảm đi phần nào dẫn tới việc tăng performance
     - **Phân biệt Horizontal Partitioning và Sharding**
         
-        ![Untitled]static/Untitled%2038.png)
+        ![Untitled](static/Untitled%2038.png)
         
     - **Demo**
         
@@ -448,7 +448,7 @@
         explain analyze select count(*) from grades_org where g between 30 and 35;
         ```
         
-        ![Untitled]static/Untitled%2039.png)
+        ![Untitled](static/Untitled%2039.png)
         
         ```sql
         #Tao Partition
@@ -475,17 +475,17 @@
         explain analyze select count(*) from grades_parts where g between 30 and 35;
         ```
         
-        ![Untitled]static/Untitled%2040.png)
+        ![Untitled](static/Untitled%2040.png)
         
     - **Automate Partitioning in Postgres**
         
-        [create_partitions.mjs]static/create_partitions.mjs)
+        [create_partitions.mjs](static/create_partitions.mjs)
         
-        [package.json]static/package.json)
+        [package.json](static/package.json)
         
-        [package-lock.json]static/package-lock.json)
+        [package-lock.json](static/package-lock.json)
         
-        [populate_customers.mjs]static/populate_customers.mjs)
+        [populate_customers.mjs](static/populate_customers.mjs)
         
         - 
 - **Section 7: Database Sharding**
@@ -515,12 +515,12 @@
         #result: down to => 0.197s
         ```
         
-        ![Untitled]static/Untitled%2041.png)
+        ![Untitled](static/Untitled%2041.png)
         
-        ![Screenshot from 2023-07-05 14-21-36.png]static/Screenshot_from_2023-07-05_14-21-36.png)
+        ![Screenshot from 2023-07-05 14-21-36.png](static/Screenshot_from_2023-07-05_14-21-36.png)
         
     
-    [booking-system.zip]static/booking-system.zip)
+    [booking-system.zip](static/booking-system.zip)
     
 - **Section 9: Database Replication**
     
@@ -530,9 +530,9 @@
     
     - **Master/Stanby Replication**
         
-        ![Untitled]static/Untitled%2042.png)
+        ![Untitled](static/Untitled%2042.png)
         
-        ![Untitled]static/Untitled%2043.png)
+        ![Untitled](static/Untitled%2043.png)
         
     - **Multi-Master Replication**
         
@@ -540,11 +540,11 @@
         
         Nhưng khi sử dụng Asynchronous vấn đề về xung đột dữ liệu rất dễ xảy ra khi các Máy khách cập nhật cùng một đơn vị dữ liệu nhưng trên các master-node khác nhau.
         
-        ![Untitled]static/Untitled%2044.png)
+        ![Untitled](static/Untitled%2044.png)
         
     - Synchronous vs Asynchronous Replication
         
-        ![Untitled]static/Untitled%2045.png)
+        ![Untitled](static/Untitled%2045.png)
         
 - **Section 10: Database System Design**
     
@@ -555,18 +555,18 @@
     - **Bài 1: Select 1 cột và Select * cái nào nhanh hơn? - Phân tích chi tiết**
         - **Case 1: So sánh khi bảng không có Index**
             
-            ![Untitled]static/Untitled%2046.png)
+            ![Untitled](static/Untitled%2046.png)
             
             - NX: Query 1 cột hay tất cả các cột là như nhau.
         - **Case 2: So sánh khi bảng đánh Single Index**
             - Thực hiện đánh index trên cột amount ⇒ Index Only Scan cho kết quả nhanh nhất
             
-            ![Untitled]static/Untitled%2047.png)
+            ![Untitled](static/Untitled%2047.png)
             
         - **Case 3: So sánh khi bảng đánh Index trên nhiều cột**
             - Thực hiện đánh index trên 2 cột payment_date và amount ⇒ index only scan vẫn cho thời gian chạy tốt nhất.
             
-            ![Untitled]static/Untitled%2048.png)
+            ![Untitled](static/Untitled%2048.png)
             
         - Tips ứng dụng thực tế:
             - Nhanh hay chậm phụ thuộc phần lớn vào chiến lược thực thi.
@@ -576,7 +576,7 @@
         
         *6 bước thực thi 1 câu lệnh – phải biết khi tối ưu cơ sở dữ liệu*
         
-        ![Untitled]static/Untitled%2049.png)
+        ![Untitled](static/Untitled%2049.png)
         
         INDEX RANGE SCAN
         
@@ -589,21 +589,21 @@
         - Tối ưu theo weight
         - Dùng Toast for oracle DB để theo dõi các thông số
             
-            ![Untitled]static/Untitled%2050.png)
+            ![Untitled](static/Untitled%2050.png)
             
-            ![Untitled]static/Untitled%2051.png)
+            ![Untitled](static/Untitled%2051.png)
             
-            ![Untitled]static/Untitled%2052.png)
+            ![Untitled](static/Untitled%2052.png)
             
-            ![Untitled]static/Untitled%2053.png)
+            ![Untitled](static/Untitled%2053.png)
             
-            ![Untitled]static/Untitled%2054.png)
+            ![Untitled](static/Untitled%2054.png)
             
         - Partition DB chủ yếu dựa theo dung lượng
         - Tải thấp liu riu ⇒ tối ưu câu lệnh k ảnh hưởng nhiều.
     - **Bài 4:** ****Chia sẻ những trải nghiệm dự án tối ưu****
         
-        ![Untitled]static/Untitled%2055.png)
+        ![Untitled](static/Untitled%2055.png)
         
         - SQL1 và SQL2 có chiến lược thực thi như nhau.
         - SQL3 index hiệu quả
@@ -616,7 +616,7 @@
         - Tiếp cận vấn đề kiến trúc theo hướng tại sao
     - ****Bài 6: Hiểu toàn bộ PostgreSQL trong 1h30p - 2023****
         
-        [Mindmap kiến thức PostgreSQL trong 1h30ph.xmind]static/Mindmap_kin_thc_PostgreSQL_trong_1h30ph.xmind)
+        [Mindmap kiến thức PostgreSQL trong 1h30ph.xmind](static/Mindmap_kin_thc_PostgreSQL_trong_1h30ph.xmind)
         
         - Sao lưu và khôi phục
             - Export ra file csv, sql
