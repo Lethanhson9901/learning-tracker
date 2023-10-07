@@ -119,7 +119,7 @@
         - **Distributed Database** (hệ thống cơ sở dữ liệu phân tán): Là hệ thống Cơ sở dữ liệu (CSDL) mà có thể được phân tải, lưu trữ ở nhiều nơi. Ví dụ như ứng dụng sử dụng nhiều CSDL và các CSDL có thể nằm ở các máy chủ vật lý khác nhau.
         - **Strong Consistency** (tính nhất quán mạnh): Sau khi một cập nhật được diễn ra thì tất cả các lần đọc dữ liệu sau đó đều trả về giá trị mới được cập nhật.
         - **Eventual Consistency** (tính nhất quán cuối cùng, là một dạng của tính nhất quán yếu - Weak Consistency): Sau khi một cập nhật được diễn ra, các lần đọc sau đó không đảm bảo sẽ luôn trả về giá trị mới được cập nhật (có thể có lần đọc vẫn trả về dữ liệu cũ). Tuy nhiên sau một khoảng thời gian (đồng bộ giữa các CSDL) thì cuối cùng các lần đọc đều trả về giá trị mới nhất.
-- **Section 3: Understanding Database Internals**
+- [Section 3: Understanding Database Internals](#section-3-understanding-database-internals)
     - **How tables and indexes are store on disk** (Bảng và index được lưu trữ ntn trong ổ đĩa)
         - **Page**
             - Tùy thuộc vào kiểu lưu trữ dữ liệu của DB (row vs column store), hàng (hoặc cột) sẽ được lưu trữ và đọc dưới dạng *logical pages (trang logic)*
@@ -182,7 +182,7 @@
         
     - **Primary Key vs Secondary Key**
         - 
-- **Section 4: Database Indexing**
+- [Section 4: Database Indexing](#section-4-database-indexing)
     
     Chương này chúng ta sẽ thực hành index với Postgres DB
     
@@ -332,7 +332,8 @@
         
         ![Untitled](static/Untitled%2025.png)
         
-- **Section 5: B-Tree and B+Tree in Production DB system**
+- [Section 5: B-Tree and B+Tree in Production DB system](#section-5-b-tree-and-b-tree-in-production-db-system)
+
     - **Full Table Scan**
         
         ![Untitled](static/Untitled%2026.png)
@@ -406,14 +407,14 @@
         
         ![Untitled](static/Untitled%2035.png)
         
-- **Bonus: Joining Table**
+- [Bonus: Joining Table](#bonus-joining-table)
     
     [Hiểu về Join để tăng performance với PostgreSQL - Viblo](https://viblo.asia/p/005-hieu-ve-join-de-tang-performance-voi-postgresql-924lJjpXlPM)
     
     - Nested Loop Join
     - Hash Join
     - Merge Join
-- **Section 6: Database Partitioning**
+- [Section 6: Database Partitioning](#section-6-database-partitioning)
     
     Chương này giới thiệu một hướng tiếp cận khác có thể tăng query performance là áp dụng **Database Partitioning.**
     
@@ -500,14 +501,16 @@
         [populate_customers.mjs](static/populate_customers.mjs)
         
         - 
-- **Section 7: Database Sharding**
+- [Section 7: Database Sharding](#section-7-database-sharding)
+
     - Khái niệm Database Sharding ?
         - Sharding database là một mẫu kiến trúc cơ sở dữ liệu liên quan đến phân vùng ngang. Theo đó, một bảng dữ liệu lớn sẽ được *chia thành nhiều phân vùng khác nhau, được lưu trữ trên các server khác nhau*. Mỗi phân vùng này sẽ chứa một phần của dữ liệu và được xử lý độc lập với các phân vùng khác.
     - Consistent Hashing:
         
         [System Design Cơ Bản - Consistent Hashing | TopDev](https://topdev.vn/blog/system-design-co-ban-consistent-hashing/)
         
-- **Section 8: Concurrency Control**
+- [Section 8: Concurrency Control](#section-8-concurrency-control)
+
     - **Exclusive lock vs shared lock**
     
     [Exclusive lock và Shared lock - Viblo - Dat Bui](https://viblo.asia/p/010-exclusive-lock-va-shared-lock-924lJjn0lPM)
@@ -534,7 +537,8 @@
     
     [booking-system.zip](static/booking-system.zip)
     
-- **Section 9: Database Replication**
+- [Section 9: Database Replication](#section-9-database-replication)
+
     
     [Database Replication là gì?](https://devera.vn/blog/our-blog-1/post/database-replication-la-gi-75)
     
@@ -558,7 +562,7 @@
         
         ![Untitled](static/Untitled%2045.png)
         
-- **Section 10: Database System Design**
+- [Section 10: Database System Design](#section-10-database-system-design)
     
     **Twitter Database System Design**
     
