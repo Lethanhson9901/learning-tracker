@@ -13,15 +13,16 @@ In this repository, you will find a collection of notes, projects, tutorials, an
 
 ## Learning Goals
 
-- [List your specific learning goals and objectives]
+- Software Engineer
 
 ## Repository Structure
 
 Here's how this repository is organized:
 
-- **[Folder/Topic Name]**: Description of the content in this folder.
-  - [File 1]: Description of File 1.
-  - [File 2]: Description of File 2.
+- **Data Engineer**
+  - **Fundamental of database engineering Udemy course**
+    - **docs**: Documents and resources related to the course.
+
 - **[Another Folder/Topic]**: Description of the content in this folder.
   - [File 3]: Description of File 3.
   - [File 4]: Description of File 4.
