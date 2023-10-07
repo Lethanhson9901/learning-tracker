@@ -4,8 +4,8 @@ Welcome to my personal learning repository! This is where I document my journey 
 ## About Me
 
 - **Name**: Le Thanh Son
-- **GitHub Profile**: https://github.com/lethanhson9901
-- **LinkedIn Profile**: https://www.linkedin.com/in/son-le-thanh-42892a16b/
+- **GitHub Profile**: [Github](https://github.com/lethanhson9901)
+- **LinkedIn Profile**: [LinkedIn](https://www.linkedin.com/in/son-le-thanh-42892a16b/)
 
 ## Introduction
 
@@ -44,8 +44,8 @@ If you'd like to contribute to this repository or suggest improvements, please f
 
 If you have any questions or would like to connect, you can reach me through:
 
-- Email: [Your Email Address]
-- LinkedIn: [Your LinkedIn Profile Link]
+- Email: hoasung9901@gmail.com
+- LinkedIn: [Your LinkedIn Profile Link](https://www.linkedin.com/in/son-le-thanh-42892a16b/)
 
 ## License
 
