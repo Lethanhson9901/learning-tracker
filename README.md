@@ -4,9 +4,6 @@ Welcome to my personal learning repository! This is where I document my journey 
 ## Introduction
 In this repository, you will find a collection of notes, projects, tutorials, and resources that I've gathered during my learning journey. My goal is to share my insights and discoveries with others, as well as keep track of my progress.
 
-## Learning Goals
-- Software Engineer
-
 ## Repository Structure
 Here's how this repository is organized:
 - **Data Engineer**
