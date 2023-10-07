@@ -21,7 +21,7 @@ Here's how this repository is organized:
 
 - **Data Engineer**
   - [Fundamental of database engineering Udemy course](./Data%20Engineer/Fundamental%20of%20database%20engineering%20Udemy%20course)
-    [docs](./Data%20Engineer/Fundamental%20of%20database%20engineering%20Udemy%20course/doc): Documents and resources related to the course.
+    - [docs](./Data%20Engineer/Fundamental%20of%20database%20engineering%20Udemy%20course/doc): Documents and resources related to the course.
 
 - **[Another Folder/Topic]**: Description of the content in this folder.
   - [File 3]: Description of File 3.
