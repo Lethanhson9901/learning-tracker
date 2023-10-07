@@ -1,6 +1,18 @@
 # Fundamental of database engineering Udemy course
+## MENU:
 
-- **Section 2: ACID**
+1. [Section 2: ACID](#section-2-acid)
+2. [Section 3: Understanding Database Internals](#section-3-understanding-database-internals)
+3. [Section 4: Database Indexing](#section-4-database-indexing)
+4. [Section 5: B-Tree and B+Tree in Production DB system](#section-5-b-tree-and-b-tree-in-production-db-system)
+5. [Bonus: Joining Table](#bonus-joining-table)
+6. [Section 6: Database Partitioning](#section-6-database-partitioning)
+7. [Section 7: Database Sharding](#section-7-database-sharding)
+8. [Section 8: Concurrency Control](#section-8-concurrency-control)
+9. [Section 9: Database Replication](#section-9-database-replication)
+10. [Section 10: Database System Design](#section-10-database-system-design)
+
+- [Section 2: ACID](#section-2-acid)
     
     [Khái niệm transaction trong database | TopDev](https://topdev.vn/blog/khai-niem-transaction-trong-database/)
     
