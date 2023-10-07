@@ -45,7 +45,7 @@ If you'd like to contribute to this repository or suggest improvements, please f
 If you have any questions or would like to connect, you can reach me through:
 
 - Email: hoasung9901@gmail.com
-- LinkedIn: [Your LinkedIn Profile Link](https://www.linkedin.com/in/son-le-thanh-42892a16b/)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/son-le-thanh-42892a16b/)
 
 ## License
 
