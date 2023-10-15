@@ -8,10 +8,7 @@ In this repository, you will find a collection of notes, projects, tutorials, an
 Here's how this repository is organized:
 - **Data Engineer**
   - [Fundamental of database engineering Udemy course](./Data%20Engineer/Fundamental%20of%20database%20engineering%20Udemy%20course)
-
-- **[Another Folder/Topic]**: Description of the content in this folder.
-  - [File 3]: Description of File 3.
-  - [File 4]: Description of File 4.
+  - [Data Engineer Essentials](./Data%20Engineer/Data%20Engineer%20Essentials)
 
 Feel free to explore the content and use it as a resource for your own learning journey.
 
