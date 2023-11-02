@@ -72,20 +72,39 @@ ____
 
 
 - ### <a name="bind-mounts">3.3 Trường hợp nào thì sử dụng bind mounts</a>
+    Nhớ rằng, bind mounts thường dễ sử dụng và hiệu quả trong quá trình phát triển và thử nghiệm, nhưng chúng không cung cấp tính bền vững tương tự như Docker Volumes. Điều này có nghĩa rằng dữ liệu trong bind mounts có thể bị mất khi container bị xóa hoặc khi bạn di chuyển sang một máy chủ khác.
 
     - `bind mounts` có chức năng hạn chế so với `volumes`. Khi ta sử dụng `bind mounts` thì một file hoặc một thư mục trên Docker host sẽ được mount tới containers với đường dẫn đầy đủ.
 
     - Đây là các trường hợp phổ biến lựa chọn `bind mounts` đối với containers:
 
-        + Chia sẻ các file cấu hình từ Docker host tới containers. 
+        + **Phát triển và Debugging ứng dụng**: Khi bạn đang phát triển và debug ứng dụng, việc sử dụng bind mounts cho phép bạn chia sẻ mã nguồn và tệp tin cấu hình từ máy tính phát triển của bạn vào container. Điều này giúp bạn thấy được các thay đổi ngay lập tức và tiện lợi khi thử nghiệm sửa lỗi và phát triển.
 
-        + Chia sẻ khi các file hoặc cấu trúc thư mục trên Docker host có cấu trúc cố định phù hợp với yêu cầu của containers.
+        + **Cập nhật cấu hình ứng dụng dễ dàng**: Khi bạn muốn cập nhật tệp tin cấu hình của ứng dụng mà không cần phải tạo lại container hoặc image. Bind mounts cho phép bạn cập nhật cấu hình từ bên ngoài và ứng dụng trong container sẽ thấy được các thay đổi ngay lập tức.
 
-        + Kiểm soát được các thay đổi của containers đối với filesystem trên Docker host. Do khi sử dụng `bind mounts`, containers có thể trực tiếp thay đổi filesystem trên Docker host.
+        + **Chia sẻ dữ liệu giữa container và host**: Bind mounts cho phép bạn chia sẻ dữ liệu giữa container và máy host. Điều này có thể hữu ích khi bạn muốn dữ liệu trong container có sẵn cho các ứng dụng hoặc dịch vụ bên ngoài container.
+
+        + **Chia sẻ mã nguồn và tệp tin tĩnh**: Bind mounts thường được sử dụng để chia sẻ mã nguồn và tệp tin tĩnh, chẳng hạn như trang web tĩnh hoặc tệp tin hệ thống cục bộ mà bạn muốn sử dụng trong container.
+
+        + **Chia sẻ dữ liệu trong quá trình thử nghiệm và thử nghiệm nhanh chóng**: Khi bạn cần triển khai và thử nghiệm một container tạm thời và bạn muốn chia sẻ dữ liệu hoặc tệp tin cụ thể với container mà không cần sử dụng Docker Volumes.
+
+        + **Phối hợp với nhiều container**: Bind mounts cho phép bạn chia sẻ cùng một thư mục hoặc tệp với nhiều container đang chạy trên cùng máy host.
 
 - ### <a name="tmpfs">3.4 Trường hợp nào thì sử dụng tmpfs mount</a>
 
-    - `tmpfs mounts` được sử dụng trong các trường hợp ta không muốn dữ liệu tồn tại trên Docker host hay containers vì lý do bảo mật hoặc đảm bảo hiệu suất của containers khi ghi một lượng lớn dữ liệu một cách không liên tục.
+    - `Tmpfs mount` là một loại mount point trong Linux mà bạn có thể sử dụng để tạo không gian lưu trữ trên bộ nhớ RAM. Khi sử dụng `Tmpfs mount` trong môi trường Docker, nó thường phù hợp trong các trường hợp sau:
+
+        + **Cache tạm thời**: `Tmpfs mount` thường được sử dụng để tạo không gian lưu trữ tạm thời cho các ứng dụng hoặc dịch vụ mà cần sử dụng dữ liệu tạm thời trong quá trình hoạt động. Điều này có thể giúp cải thiện hiệu suất bằng cách đọc và ghi dữ liệu nhanh chóng từ bộ nhớ RAM.
+
+        + **Giảm việc ghi lên ổ đĩa**: Khi bạn không muốn lưu trữ dữ liệu tạm thời trên ổ đĩa cứng vì nó có thể làm giảm tuổi thọ ổ đĩa hoặc tạo ra nhiều hoạt động đọc/ghi, `Tmpfs mount` trên RAM có thể giúp giảm tải cho ổ đĩa.
+
+        + **Bảo mật hoặc dữ liệu nhạy cảm**: `Tmpfs mount` được tạo trên bộ nhớ RAM, điều này có nghĩa rằng dữ liệu tạm thời sẽ bị xóa khi máy chủ hoặc container bị khởi động lại. Điều này có thể hữu ích cho các ứng dụng hoặc dịch vụ yêu cầu tính bảo mật cao, vì dữ liệu không được lưu trữ trên đĩa.
+
+        + **Tạo ổ đĩa ảo tạm thời**: Bạn có thể sử dụng `Tmpfs mount` để tạo một ổ đĩa ảo tạm thời cho container hoặc ứng dụng để lưu trữ tạm thời, tạo ra một không gian lưu trữ tạm thời như /tmp trên bộ nhớ RAM.
+
+        + **Hiệu suất cao và đáng tin cậy**: `Tmpfs mount` trên RAM làm cho dữ liệu có thời gian truy cập thấp và tốc độ ghi rất nhanh. Điều này có thể hữu ích trong các tình huống yêu cầu hiệu suất cao và đáng tin cậy.
+
+    Tuy nhiên, lưu ý rằng khi sử dụng `Tmpfs mount`, bạn cần quản lý việc sử dụng bộ nhớ RAM, vì dữ liệu được lưu trữ trong `Tmpfs mount` sẽ sử dụng bộ nhớ thực tế. Nếu bạn sử dụng quá nhiều `Tmpfs mount`s hoặc cấu hình `Tmpfs mount` quá lớn, có thể gây ảnh hưởng đến hiệu suất tổng thể của hệ thống hoặc container của bạn.
 
 ____
 
