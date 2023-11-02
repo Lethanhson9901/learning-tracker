@@ -56,17 +56,17 @@ ____
 
     - Đây là cách phổ biến được lựa chọn để duy trì dữ liệu trong services và containers. Một số trường hợp sử dụng `volumes` có thể bao gồm:
 
-        + Lưu trữ dữ liệu của ứng dụng hoặc cơ sở dữ liệu: Khi bạn cần lưu trữ dữ liệu bền vững cho ứng dụng của bạn, chẳng hạn như dữ liệu cơ sở dữ liệu, tệp tin cấu hình, hình ảnh, video, hoặc bất kỳ dữ liệu nào mà ứng dụng của bạn sử dụng, bạn nên sử dụng Docker Volumes để đảm bảo tính bền vững.
+        + **Lưu trữ dữ liệu của ứng dụng hoặc cơ sở dữ liệu**: Khi bạn cần lưu trữ dữ liệu bền vững cho ứng dụng của bạn, chẳng hạn như dữ liệu cơ sở dữ liệu, tệp tin cấu hình, hình ảnh, video, hoặc bất kỳ dữ liệu nào mà ứng dụng của bạn sử dụng, bạn nên sử dụng Docker Volumes để đảm bảo tính bền vững.
 
-        + Chia sẻ dữ liệu giữa các container: Khi bạn muốn chia sẻ dữ liệu giữa nhiều container, Docker Volumes là giải pháp lý tưởng. Ví dụ, bạn có thể sử dụng Docker Volumes để lưu trữ dữ liệu cơ sở dữ liệu chung và sau đó liên kết nó với nhiều container ứng dụng để chúng có thể truy cập và cập nhật cùng một dữ liệu.
+        + **Chia sẻ dữ liệu giữa các container**: Khi bạn muốn chia sẻ dữ liệu giữa nhiều container, Docker Volumes là giải pháp lý tưởng. Ví dụ, bạn có thể sử dụng Docker Volumes để lưu trữ dữ liệu cơ sở dữ liệu chung và sau đó liên kết nó với nhiều container ứng dụng để chúng có thể truy cập và cập nhật cùng một dữ liệu.
 
-        + Backup và Restore dữ liệu dễ dàng: Docker Volumes giúp bạn sao lưu và phục hồi dữ liệu dễ dàng. Bạn có thể sao lưu Docker Volume ra khỏi container và sau đó khôi phục nó khi cần thiết.
+        + **Backup và Restore dữ liệu dễ dàng**: Docker Volumes giúp bạn sao lưu và phục hồi dữ liệu dễ dàng. Bạn có thể sao lưu Docker Volume ra khỏi container và sau đó khôi phục nó khi cần thiết.
 
-        + Tích hợp với các dịch vụ lưu trữ dữ liệu bên ngoài: Nếu bạn muốn tích hợp dữ liệu của container với các dịch vụ lưu trữ dữ liệu bên ngoài như Amazon S3, NFS, hoặc các dịch vụ lưu trữ dữ liệu đám mây khác, Docker Volumes cho phép bạn kết nối dễ dàng với những dịch vụ này.
+        + **Tích hợp với các dịch vụ lưu trữ dữ liệu bên ngoài**: Nếu bạn muốn tích hợp dữ liệu của container với các dịch vụ lưu trữ dữ liệu bên ngoài như Amazon S3, NFS, hoặc các dịch vụ lưu trữ dữ liệu đám mây khác, Docker Volumes cho phép bạn kết nối dễ dàng với những dịch vụ này.
 
-        + Quản lý dữ liệu của ứng dụng trong môi trường phát triển và sản xuất: Docker Volumes giúp bạn quản lý dữ liệu ứng dụng trong cả môi trường phát triển và sản xuất. Bạn có thể sử dụng cùng một cấu hình Volume khi chạy ứng dụng trên máy tính cá nhân và trên máy chủ sản xuất.
+        + **Quản lý dữ liệu của ứng dụng trong môi trường phát triển và sản xuất**: Docker Volumes giúp bạn quản lý dữ liệu ứng dụng trong cả môi trường phát triển và sản xuất. Bạn có thể sử dụng cùng một cấu hình Volume khi chạy ứng dụng trên máy tính cá nhân và trên máy chủ sản xuất.
 
-        + Dễ dàng thay thế và nâng cấp ứng dụng: Khi bạn cần thay thế hoặc nâng cấp ứng dụng, bạn có thể chỉ cần cắt container cũ và triển khai container mới, giữ nguyên Docker Volume để đảm bảo dữ liệu không bị mất.
+        + **Dễ dàng thay thế và nâng cấp ứng dụng**: Khi bạn cần thay thế hoặc nâng cấp ứng dụng, bạn có thể chỉ cần cắt container cũ và triển khai container mới, giữ nguyên Docker Volume để đảm bảo dữ liệu không bị mất.
 
 
 
