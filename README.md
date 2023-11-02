@@ -10,7 +10,7 @@ Here's how this repository is organized:
   - [Fundamental of database engineering Udemy course](./Data%20Engineer/Fundamental%20of%20database%20engineering%20Udemy%20course)
   - [Data Engineer Essentials](./Data%20Engineer/Data%20Engineer%20Essentials)
   - [Celery](./Data%20Engineer/Celery)
-
+  - [Docker](./Data%20Engineer/docker-docs/)
 Feel free to explore the content and use it as a resource for your own learning journey.
 
 
