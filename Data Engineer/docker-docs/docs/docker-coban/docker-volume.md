@@ -20,19 +20,15 @@ ____
 
 - ### <a name="about">3.1 Giới thiệu cách thức quản lý</a>
 
-    - Việc lưu trữ dữ liệu bên trong một container là có thể làm được nhưng vẫn vẫn có một vài nhược điểm:
+    Trong Docker, việc quản lý dữ liệu bên trong các container có thể gặp một số khó khăn. Cụ thể, khi container ngừng hoạt động, dữ liệu bên trong nó có thể mất đi và không dễ dàng trích xuất ra ngoài cho mục đích khác. Dữ liệu của container thường liên quan chặt chẽ với máy chủ Docker, khó di chuyển đến các máy chủ khác. Việc ghi dữ liệu vào container cũng ảnh hưởng đến hiệu suất.
 
-        + Dữ liệu sẽ không còn tồn tại khi mà container không còn chạy và rất khó để lấy một dữ liệu từ bên trong container ra bên ngoài nếu có một tiến trình khác cần nó.
+    Docker giải quyết vấn đề này bằng cách cung cấp ba cách để quản lý dữ liệu:
 
-        + Dữ liệu của container được gắn kết và lưu trữ mật thiết với Docker host. Vì thế mà không thể dễ dàng di chuyển dữ liệu đến một nơi khác.
+    - Volumes: Đây là cách phổ biến nhất và được Docker quản lý. Volumes cho phép bạn lưu trữ dữ liệu một cách an toàn và có thể sử dụng cho nhiều mục đích.
 
-        + Việc ghi dữ liệu vào một layer của container yêu cầu storage driver để quản lý filesystem. Việc này làm giảm hiệu suất so với việc sử dụng data volumes ghi trực tiếp vào filesystem trên Docker host.
+    - Bind Mounts: Bind mounts cho phép bạn chia sẻ dữ liệu từ máy chủ Docker với container. Điều này thường phù hợp khi bạn muốn chia sẻ các tệp cấu hình hoặc có cấu trúc thư mục cố định trên máy chủ Docker phù hợp với container.
 
-    - Docker cung cấp 3 cách khác nhau để có thể chia sẻ dữ liệu (mount data) từ Docker host tới container đó là:
-
-        + volumes
-        + bind mounts
-        + tmpfs mounts
+    - Tmpfs Mounts: Tmpfs mounts cho phép bạn lưu trữ tạm thời dữ liệu trong bộ nhớ RAM của máy chủ Docker, phù hợp cho các trường hợp bạn không muốn dữ liệu tồn tại trên máy chủ Docker hoặc trong container vì lý do bảo mật hoặc hiệu suất.
 
         volumes thường luôn là cách được lựa chọn sử dụng nhiều nhất đối với mọi trường hợp
 
