@@ -56,7 +56,7 @@ ____
 
     - Đây là cách phổ biến được lựa chọn để duy trì dữ liệu trong services và containers. Một số trường hợp sử dụng `volumes` có thể bao gồm:
 
-        + Lưu trữ dữ liệu của ứng dụng hoặc cơ sở dữ liệu: Khi bạn cần lưu trữ dữ liệu bền vững cho ứng dụng của bạn, chẳng hạn như dữ liệu cơ sở dữ liệu, tệp tin cấu hình, hình ảnh, video, hoặc bất kỳ dữ liệu nào mà ứng dụng của bạn sử dụng, bạn nên sử dụng Docker `volumes` để đảm bảo tính bền vững.
+        + Lưu trữ dữ liệu của ứng dụng hoặc cơ sở dữ liệu: Khi bạn cần lưu trữ dữ liệu bền vững cho ứng dụng của bạn, chẳng hạn như dữ liệu cơ sở dữ liệu, tệp tin cấu hình, hình ảnh, video, hoặc bất kỳ dữ liệu nào mà ứng dụng của bạn sử dụng, bạn nên sử dụng Docker Volumes để đảm bảo tính bền vững.
 
         + Chia sẻ dữ liệu giữa các container: Khi bạn muốn chia sẻ dữ liệu giữa nhiều container, Docker Volumes là giải pháp lý tưởng. Ví dụ, bạn có thể sử dụng Docker Volumes để lưu trữ dữ liệu cơ sở dữ liệu chung và sau đó liên kết nó với nhiều container ứng dụng để chúng có thể truy cập và cập nhật cùng một dữ liệu.
 
