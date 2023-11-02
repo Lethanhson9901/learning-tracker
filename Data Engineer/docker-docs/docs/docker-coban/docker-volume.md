@@ -30,7 +30,7 @@ ____
 
     - Tmpfs Mounts: Tmpfs mounts cho phép bạn lưu trữ tạm thời dữ liệu trong bộ nhớ RAM của máy chủ Docker, phù hợp cho các trường hợp bạn không muốn dữ liệu tồn tại trên máy chủ Docker hoặc trong container vì lý do bảo mật hoặc hiệu suất.
 
-        volumes thường luôn là cách được lựa chọn sử dụng nhiều nhất đối với mọi trường hợp
+    `volumes` thường luôn là cách được lựa chọn sử dụng nhiều nhất đối với mọi trường hợp
 
     - Không có vấn đề nào xảy ra khi ta lựa chọn cách chia sẻ dữ liệu để sử dụng, vì các dữ liệu đều giống nhau trong container. Chúng được quy định giống như một thư mục hoặc một file trong filesystem của containers. Sự khác biệt giữa `volumes`, `bind mounts` và `tmpfs mounts` chỉ đơn giản là khác nhau về vị trí lưu trữ dữ liệu trên Docker host.
 
@@ -46,23 +46,29 @@ ____
 
 - ### <a name="volumes">3.2 Trường hợp nào thì sử dụng volumes</a>
 
-    - volumes được tạo và quản lý bởi Docker. Ta có thể tạo volumes với câu lệnh `docker volume create` hoặc tạo volumes trong khi tạo containers, ...
+    - `volumes` được tạo và quản lý bởi Docker. Ta có thể tạo `volumes` với câu lệnh `docker volume create` hoặc tạo `volumes` trong khi tạo containers, ...
 
-    - Khi tạo ra volumes, nó sẽ được lưu trữ trong một thư mục trên Docker host. Khi ta thực hiện mount volumes vào container thì thư mục này sẽ được mount vào container. Điều này tương tự như cách `bind mounts` hoạt động ngoại trừ việc được Docker quản lý.
+    - Khi tạo ra `volumes`, nó sẽ được lưu trữ trong một thư mục trên Docker host. Khi ta thực hiện mount `volumes` vào container thì thư mục này sẽ được mount vào container. Điều này tương tự như cách `bind mounts` hoạt động ngoại trừ việc được Docker quản lý.
 
-    - volumes có thể được mount vào nhiểu containers cùng một lúc. Khi không có containers nào sử dụng volumes thì volumes vẫn ở trạng thái cho phép mount vào containers và không bị xóa một cách tự động.
+    - `volumes` có thể được mount vào nhiểu containers cùng một lúc. Khi không có containers nào sử dụng `volumes` thì `volumes` vẫn ở trạng thái cho phép mount vào containers và không bị xóa một cách tự động.
 
-    - volumes hỗ trợ volume drivers, do đó ta có thể sử dụng để lưu trữ dữ liệu từ remote hosts hoặc cloud providers.
+    - `volumes` hỗ trợ volume drivers, do đó ta có thể sử dụng để lưu trữ dữ liệu từ remote hosts hoặc cloud providers.
 
-    - Đây là cách phổ biến được lựa chọn để duy trì dữ liệu trong services và containers. Một số trường hợp sử dụng volumes có thể bao gồm:
+    - Đây là cách phổ biến được lựa chọn để duy trì dữ liệu trong services và containers. Một số trường hợp sử dụng `volumes` có thể bao gồm:
 
-        + Chia sẻ dữ liệu với nhiều containers đang chạy. Dữ liệu yêu cầu phải tồn tại kể cả khi dừng hoặc loại bỏ containers.
+        + Lưu trữ dữ liệu của ứng dụng hoặc cơ sở dữ liệu: Khi bạn cần lưu trữ dữ liệu bền vững cho ứng dụng của bạn, chẳng hạn như dữ liệu cơ sở dữ liệu, tệp tin cấu hình, hình ảnh, video, hoặc bất kỳ dữ liệu nào mà ứng dụng của bạn sử dụng, bạn nên sử dụng Docker `volumes` để đảm bảo tính bền vững.
 
-        + Khi Docker host có cấu trúc filesystem không thống nhất, ổn định, thường xuyên thay đổi.
+        + Chia sẻ dữ liệu giữa các container: Khi bạn muốn chia sẻ dữ liệu giữa nhiều container, Docker Volumes là giải pháp lý tưởng. Ví dụ, bạn có thể sử dụng Docker Volumes để lưu trữ dữ liệu cơ sở dữ liệu chung và sau đó liên kết nó với nhiều container ứng dụng để chúng có thể truy cập và cập nhật cùng một dữ liệu.
 
-        + Khi muốn lưu trữ dữ liệu containers trên remote hosts, cloud thay vì Docker host.
+        + Backup và Restore dữ liệu dễ dàng: Docker Volumes giúp bạn sao lưu và phục hồi dữ liệu dễ dàng. Bạn có thể sao lưu Docker Volume ra khỏi container và sau đó khôi phục nó khi cần thiết.
 
-        + Khi có nhu cầu sao lưu, backup hoặc migrate dữ liệu tới Docker host khác thì volumes là một sự lựa tốt. Ta cần phải dừng containers sử dụng volumes sau đó thực hiện backup tại đường dẫn `/var/lib/docker/volumes/<volume-name>`
+        + Tích hợp với các dịch vụ lưu trữ dữ liệu bên ngoài: Nếu bạn muốn tích hợp dữ liệu của container với các dịch vụ lưu trữ dữ liệu bên ngoài như Amazon S3, NFS, hoặc các dịch vụ lưu trữ dữ liệu đám mây khác, Docker Volumes cho phép bạn kết nối dễ dàng với những dịch vụ này.
+
+        + Quản lý dữ liệu của ứng dụng trong môi trường phát triển và sản xuất: Docker Volumes giúp bạn quản lý dữ liệu ứng dụng trong cả môi trường phát triển và sản xuất. Bạn có thể sử dụng cùng một cấu hình Volume khi chạy ứng dụng trên máy tính cá nhân và trên máy chủ sản xuất.
+
+        + Dễ dàng thay thế và nâng cấp ứng dụng: Khi bạn cần thay thế hoặc nâng cấp ứng dụng, bạn có thể chỉ cần cắt container cũ và triển khai container mới, giữ nguyên Docker Volume để đảm bảo dữ liệu không bị mất.
+
+
 
 
 - ### <a name="bind-mounts">3.3 Trường hợp nào thì sử dụng bind mounts</a>
