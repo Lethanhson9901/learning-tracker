@@ -6,7 +6,7 @@
 
 - **Write Vagrant file**
     
-    [vagrant.zip](./Kubernetes/stacked-etcd-kubeadm/vagrant.zip)
+    [vagrant.zip](./vagrant.zip)
     
 - **Access all VMs**
     

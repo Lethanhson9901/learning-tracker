@@ -2,9 +2,9 @@
 
 [https://github.com/mmumshad/kubernetes-the-hard-way](https://github.com/mmumshad/kubernetes-the-hard-way)
 
-[vagrant.zip](./Kubernetes/manual-setup/vagrant.zip)
+[vagrant.zip](./vagrant.zip)
 
-![Untitled](./Kubernetes/manual-setup/Untitled.png)
+![Untitled](./Untitled.png)
 
 - 04: **Provisioning a CA and Generating TLS Certificates**
     
@@ -1368,7 +1368,7 @@
         
         - Initially, the worker node might show as `NotReady` since pod networking is not yet installed.
         
-        ![Untitled](./Kubernetes/manual-setup/Untitled%201.png)
+        ![Untitled](./Untitled-1.png)
         
     
     ### Summary
