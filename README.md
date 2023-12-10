@@ -11,7 +11,10 @@ Here's how this repository is organized:
   - [Data Engineer Essentials](./Data%20Engineer/Data%20Engineer%20Essentials)
   - [Celery](./Data%20Engineer/Celery)
   - [Docker](./Data%20Engineer/docker-docs/)
-  
+  - [Kubernetes](./Kubernetes)
+    - [Manual setup: Based on kubernetes The hard way but with more nodes](./Kubernetes/manual-setup/)
+    - [Setup HA stacked etcd Kubernetes using Kubeadm](./Kubernetes/stacked-etcd-kubeadm/)
+    
 Feel free to explore the content and use it as a resource for your own learning journey.
 
 
